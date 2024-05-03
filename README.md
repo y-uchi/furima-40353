@@ -11,7 +11,7 @@
 | kana_first_name    | string  | null: false |
 | email              | string  | null: false, unique: true |
 | encrypted_password | string  | null: false |
-| birthday          | integer | null: false |
+| birthday           | date    | null: false |
 
 ### Association
 - has_many :items 
@@ -28,10 +28,10 @@
 | category_id        | integer    | null: false |
 | condition_id       | integer    | null: false |
 | delivery_charge_id | integer    | null: false |
-| shipping_source_id | integer    | null: false |
-| shipping_day_id   | integer    | null: false |
+| prefectures_id     | integer    | null: false |
+| shipping_day_id    | integer    | null: false |
 | price              | integer    | null: false |
-| user            | references | null: false, foreign_key: true |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -43,8 +43,8 @@
 | Column  | Type       | Options     |
 | ------- | ---------- | ----------- |
 | content | text       | null: false |
-| user | references | null: false, foreign_key: true |
-| item | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -52,28 +52,27 @@
 
 # ordersテーブル
 
-| Column         | Type       | Options |
-| -------------- | ---------- | ------- |
+| Column      | Type       | Options |
+| ----------- | ---------- | ------- |
 | item        | references | null: false, foreign_key: true |
 | user        | references | null: false, foreign_key: true |
-| address     | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
-- has_one :item
-- belongs_to :address
+- belongs_to :item
+- has_one :address
 
 # addressテーブル
 
 | Column         | Type       | Options |
 | -------------- | ---------- | ------- |
-| post_code      | integer    | null: false |
+| post_code      | string     | null: false |
 | prefectures_id | integer    | null: false |
 | municipalities | string     | null: false |
-| street_address | integer    | null: false |
+| street_address | string     | null: false |
 | building_name  | string     |  |
-| tel_number     | integer    | null: false |
+| tel_number     | string     | null: false |
 | order          | references | null: false, foreign_key: true |
 
 ### Association
-- has_many :orders
+- belongs_to :order
