@@ -87,6 +87,11 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Detail is too long (maximum is 1000 characters)')
       end
+      it 'priceに小数点が含まれていると登録できない' do
+        @item.price = '557.3'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price Half-width number')
+      end
     end
   end
 end
