@@ -1,9 +1,6 @@
 class OrdersController < ApplicationController
   def index
-  end
-
-  def new
-    @order_address = OrderAddress.new
+    @item = Item.find(params[:item_id])
   end
 
   def create
@@ -12,7 +9,7 @@ class OrdersController < ApplicationController
       @order_address.save
       redirect_to root_path
     else
-      render :new, status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
 
