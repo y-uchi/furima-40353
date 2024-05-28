@@ -6,5 +6,6 @@ FactoryBot.define do
     street_address { '1-1' }
     building_name { 'フロンティアビル3F' }
     tel_number { 11111111111 }
+    token { 'tok_abcdefghijk12345678901234567' }
   end
 end
