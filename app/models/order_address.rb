@@ -9,6 +9,8 @@ class OrderAddress
     validates :street_address
     validates :tel_number, format: { with: /\A[0-9]{10,11}\z/ }
     validates :token
+    validates :user_id
+    validates :item_id
   end
 
   def save
