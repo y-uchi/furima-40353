@@ -125,10 +125,11 @@
             <div class='item-img-content'>
               <%= image_tag item.image, class: "item-img" if item.image.attached? %>
 
-              <%# 商品購入機能実装後に必ず実装、商品が売却済みの時に表示%>
-              <!--<div class='sold-out'>
-                <span>Sold Out!!</span>
-              </div>-->
+              <% if item.order %>
+                <div class='sold-out'>
+                  <span>Sold Out!!</span>
+               </div>
+               <% end %>
 
             </div>
             <div class='item-info'>
